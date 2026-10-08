@@ -103,7 +103,7 @@
 
             systemd.services.birthday-bot = {
               description = "birthday telegram bot service";
-              after = [ "network.target" ];
+              after = [ "network-online.target" ];
               wants = [ "network-online.target" ];
               wantedBy = [ "multi-user.target" ];
 
@@ -119,6 +119,7 @@
 
                 Type = "simple";
                 Restart = "on-failure";
+                RestartSec = 10;
               };
             };
           };
